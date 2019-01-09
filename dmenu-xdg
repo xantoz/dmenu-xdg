@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 cd `dirname $0`
-HASH=`vmenu < xdg-dmenu.cache | awk '{ print $NF }'`
+HASH=`dmenu -l 40 < ~/.config/dmenu-xdg/xdg-dmenu.cache | awk '{ print $NF }'`
 [[ -z $HASH ]] && exit
-CMD=`grep $HASH xdg-exec.cache | cut -d' ' -f 2-`
+CMD=`grep $HASH ~/.config/dmenu-xdg/xdg-exec.cache | cut -d' ' -f 2-`
 exec sh -c "$CMD"
